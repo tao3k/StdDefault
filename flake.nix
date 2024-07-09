@@ -12,11 +12,11 @@
   outputs =
     { omnibus, ... }@inputs:
     let
-      inherit (inputs.nixpkgs) lib;
       inherit (omnibus.flake.inputs) std climodSrc flake-parts;
       systems = [
         "x86_64-linux"
         "aarch64-linux"
+        "aarch64-darwin"
       ];
       omnibusStd =
         (omnibus.pops.std {
@@ -29,8 +29,7 @@
       inherit systems;
       imports = [ omnibusStd.flakeModule ];
       std.std = omnibusStd.mkDefaultStd {
-        cellsFrom = ./cells;
-        inherit systems;
+        cellsFrom = ./std/cells;
         inputs = inputs // {
           inherit climodSrc;
         };

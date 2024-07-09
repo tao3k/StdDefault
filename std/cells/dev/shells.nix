@@ -17,6 +17,11 @@ in
       cell.devshellProfiles.commands
     ];
 
+    nixago = [
+      cell.configs.treefmt.default
+      cell.configs.lefthook.default
+      cell.configs.conform.default
+    ];
     commands = [ ];
   };
 }
