@@ -3,9 +3,7 @@
 #+EMAIL: gtrunsec@hardenedlinux.org
 #+DATE: 2024-07-09 Tue 03:36
 
-
-
-# Test Command
+* Test Command
 
 #+begin_src sh
 direnv allow
