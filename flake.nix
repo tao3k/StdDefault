@@ -12,7 +12,7 @@
   outputs =
     { omnibus, ... }@inputs:
     let
-      inherit (omnibus.flake.inputs) std climodSrc flake-parts;
+      inherit (omnibus.flake.inputs) std pogSrc flake-parts;
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -31,7 +31,7 @@
       std.std = omnibusStd.mkDefaultStd {
         cellsFrom = ./std/cells;
         inputs = inputs // {
-          inherit climodSrc;
+          inherit pogSrc;
         };
       };
       std.harvest = {
