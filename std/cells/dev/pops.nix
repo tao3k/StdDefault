@@ -4,7 +4,7 @@
 let
   inherit (inputs) nixpkgs;
   inherit (inputs.omnibus.inputs.flops.inputs) haumea;
-  inputs' = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
+  inputs' = (inputs.omnibus.pops.flake.setSystem nixpkgs.stdenv.hostPlatform.system).inputs;
 in
 {
   omnibus = {
@@ -16,7 +16,7 @@ in
         inputs = {
           inherit (inputs') nixfmt git-hooks;
           inherit (inputs) std;
-          nixpkgs = import inputs'.nixos-24_11 { system = nixpkgs.system; };
+          inherit nixpkgs;
         };
       };
     };
